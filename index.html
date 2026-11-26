@@ -1,0 +1,87 @@
+<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0d12">
+<title>Sona Rupa BD | আজকের সোনা-রূপার দাম</title><meta name="description" content="Sona Rupa BD: বাংলাদেশে আজকের স্বর্ণ ও রূপার দাম, ১ মাসের চার্ট ও যেকোনো দিনের দাম">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:root{--bg:#0b0d12;--c:rgba(255,255,255,.06);--b:rgba(255,255,255,.1);--t:#f3efe6;--m:#9a9484;--g:#e6b422;--up:#2ecc71;--dn:#ff5c5c}
+:root.l{--bg:#f6f2e8;--c:rgba(255,255,255,.8);--b:rgba(0,0,0,.1);--t:#1b1a16;--m:#6b6558;--g:#a87b00}
+*{box-sizing:border-box}body{margin:0;font-family:'Hind Siliguri',system-ui,sans-serif;background:radial-gradient(circle at 20% 0,rgba(230,180,34,.15),transparent 40%),var(--bg);color:var(--t);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.w{max-width:1100px;margin:0 auto;padding:16px}header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+h1{font-size:1.35rem;margin:0;color:var(--g)}h2{font-size:1.05rem;margin:0 0 10px}
+.card{background:var(--c);border:1px solid var(--b);border-radius:18px;padding:16px;backdrop-filter:blur(12px);margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.p{font-size:1.5rem;font-weight:700}.s{color:var(--m);font-size:.85rem}.up{color:var(--up)}.dn{color:var(--dn)}
+button,select,input{font:inherit;color:var(--t);background:var(--c);border:1px solid var(--b);border-radius:10px;padding:8px 12px}button{cursor:pointer}button.on{background:var(--g);color:#000;border-color:var(--g);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}#ch{height:340px;width:100%}@media(max-width:600px){#ch{height:280px}.p{font-size:1.25rem}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:800px){.two{grid-template-columns:1fr}}.big{font-size:1.6rem;font-weight:700;color:var(--g)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,204,113,.6)}100%{box-shadow:0 0 0 10px transparent}}
+@keyframes sh{to{background-position:200% 0}}
+@keyframes fl{50%{transform:translate(30px,-20px) scale(1.15)}}
+body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.25;animation:fl 14s ease-in-out infinite}
+body::before{width:340px;height:340px;background:#e6b422;top:-80px;left:-60px}
+body::after{width:300px;height:300px;background:#c0c0c8;bottom:-80px;right:-40px;animation-delay:-7s}
+h1 [data-t=title]{display:inline-block;background:linear-gradient(90deg,var(--g),#fff3b0,var(--g));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sh 5s linear infinite}
+.live{font-size:.7rem;color:var(--up);display:inline-flex;gap:5px;align-items:center;vertical-align:middle}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--up);animation:pulse 1.6s infinite}
+.card{animation:up .8s cubic-bezier(.2,.8,.2,1) both;transition:border-color .3s}.card:hover{border-color:rgba(230,180,34,.5)}
+.w>.card:nth-child(4){animation-delay:.15s}.two>.card{animation-delay:.3s}.two>.card:nth-child(2){animation-delay:.45s}
+.pcard{padding:10px;border-radius:14px;transition:.25s;animation:up .7s both;animation-delay:calc(var(--i)*.09s + .2s)}
+.pcard:hover{transform:translateY(-4px);background:var(--c);box-shadow:0 10px 30px rgba(230,180,34,.18)}
+button{transition:.2s}button:hover{transform:translateY(-1px)}button:active{transform:scale(.96)}
+.sk{height:84px;border-radius:14px;background:linear-gradient(90deg,var(--c) 25%,var(--b) 50%,var(--c) 75%);background-size:200% 100%;animation:sh 1.2s linear infinite}
+.bd{display:inline-block;padding:3px 10px;border-radius:99px;background:rgba(255,92,92,.15);color:var(--dn);font-size:.8rem}.bd.ok{background:rgba(46,204,113,.15);color:var(--up)}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
+</style></head><body><div class="w">
+<header><div><h1>🪙 <span data-t="title"></span> <span class="live"><i></i><b data-t="live"></b></span></h1><div class="s" data-t="tag"></div></div><div class="row" style="margin:0"><button id="u"></button><button id="lg"></button><button id="th">🌓</button></div></header>
+<div class="s" id="dt"></div>
+<div class="card"><div class="grid" id="cards"></div></div>
+<div class="card"><h2 data-t="chart"></h2><div class="row" id="rg"></div>
+<div class="row"><select id="k"></select><input type="date" id="f"><input type="date" id="to"><button id="ap" data-t="apply"></button><button id="csv">⬇ CSV</button></div>
+<div id="ch"></div><div class="s" id="st"></div></div>
+<div class="two"><div class="card"><h2 data-t="find"></h2><div class="row"><input type="date" id="fd"><button id="fb" data-t="search"></button></div><div id="fr" class="s"></div></div>
+<div class="card"><h2 data-t="calc"></h2><div class="row"><input id="wt" type="number" value="1" step="0.01" style="width:90px"><select id="wu"><option value="v"></option><option value="g"></option></select>
+<select id="kt"></select></div><div class="row"><span class="s" data-t="mk"></span><input id="mc" type="number" value="6" style="width:70px">%<span class="s" data-t="vat"></span><input id="vt" type="number" value="5" style="width:70px">%</div>
+<div class="s" data-t="tot"></div><div class="big" id="to2">—</div></div></div>
+<p class="s" data-t="src"></p></div>
+<script>
+const G=11.664,KS=['gold22','gold21','gold18','sonatan','silver'];
+const T={bn:{title:'Sona Rupa BD',tag:'বাংলাদেশের সোনা ও রূপার দৈনিক দাম',live:'লাইভ',old:'⚠ সর্বশেষ দাম',ago:'দিন আগের',today:'আজকের দাম',chart:'দামের চার্ট',apply:'দেখুন',find:'যেকোনো দিনের দাম',search:'খুঁজুন',calc:'গহনার দাম ক্যালকুলেটর',mk:'মজুরি',vat:'ভ্যাট (মজুরির উপর)',tot:'মোট আনুমানিক দাম',src:'সূত্র: বাজুস (BAJUS)। দাম সংশ্লিষ্ট দিনের রেকর্ড অনুযায়ী; কেনার আগে দোকানে যাচাই করুন।',gold22:'২২ ক্যারেট',gold21:'২১ ক্যারেট',gold18:'১৮ ক্যারেট',sonatan:'সনাতন',silver:'রূপা',vori:'ভরি',gram:'গ্রাম',last:'সর্বশেষ আপডেট',nod:'এই তারিখে ডেটা নেই',hi:'সর্বোচ্চ',lo:'সর্বনিম্ন',av:'গড়',rg:[['৭ দিন',7],['১ মাস',30],['৩ মাস',90],['১ বছর',365],['সব',0]],pu:'প্রতি'},
+en:{title:'Sona Rupa BD',tag:'Daily gold & silver prices in Bangladesh',live:'LIVE',old:'⚠ Latest price from',ago:'days ago',today:"Today's price",chart:'Price chart',apply:'Apply',find:'Price on any date',search:'Search',calc:'Jewellery calculator',mk:'Making',vat:'VAT (on making)',tot:'Estimated total',src:'Source: BAJUS. Prices as recorded for each date; verify at the shop before buying.',gold22:'22K Gold',gold21:'21K Gold',gold18:'18K Gold',sonatan:'Traditional',silver:'Silver',vori:'Vori',gram:'Gram',last:'Last updated',nod:'No data for this date',hi:'High',lo:'Low',av:'Avg',rg:[['7D',7],['1M',30],['3M',90],['1Y',365],['All',0]],pu:'per'}};
+let A=[],lang=localStorage.lang||'bn',unit='v',days=30,ch,key='gold22',cust=null;
+const $=i=>document.getElementById(i),tt=()=>T[lang];
+const fm=n=>n==null?'—':Number(n).toLocaleString(lang=='bn'?'bn-BD':'en-US',{maximumFractionDigits:0});
+const v=(r,k)=>r&&r[k]!=null?(unit=='v'?+r[k]:r[k]/G):null;
+const dstr=s=>new Date(s+'T00:00:00').toLocaleDateString(lang=='bn'?'bn-BD':'en-GB',{day:'numeric',month:'long',year:'numeric'});
+function cu(){document.querySelectorAll('.cu[data-v]').forEach(e=>{const t=+e.dataset.v;if(!t||matchMedia('(prefers-reduced-motion:reduce)').matches)return;const s=performance.now();(function f(n){const p=Math.min((n-s)/900,1);e.textContent=fm(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)})}
+function txt(){document.documentElement.lang=lang;document.querySelectorAll('[data-t]').forEach(e=>e.textContent=tt()[e.dataset.t]);
+$('u').textContent=tt()[unit=='v'?'vori':'gram'];$('lg').textContent=lang=='bn'?'EN':'বাং';
+$('k').innerHTML=KS.map(x=>`<option value="${x}" ${x==key?'selected':''}>${tt()[x]}</option>`).join('');
+$('kt').innerHTML=KS.slice(0,4).map(x=>`<option value="${x}">${tt()[x]}</option>`).join('');
+$('wu').options[0].text=tt().vori;$('wu').options[1].text=tt().gram;
+$('rg').innerHTML=tt().rg.map(([l,d])=>`<button class="${!cust&&d==days?'on':''}" onclick="days=${d};cust=null;render()">${l}</button>`).join('')}
+function render(){txt();if(!A.length){$('cards').innerHTML='<div class="s">No data</div>';return}
+const a=A[A.length-1],p=A[A.length-2];const td=new Date(Date.now()+6*36e5).toISOString().slice(0,10),ag=Math.round((new Date(td)-new Date(a.date))/864e5);$('dt').innerHTML=ag<=0?`<span class="bd ok">✔ ${tt().today}</span> ${dstr(a.date)}`:`<span class="bd">${tt().old} ${dstr(a.date)} · ${fm(ag)} ${tt().ago}</span>`;
+$('cards').innerHTML=KS.map(k=>{const c=v(a,k),o=v(p,k),d=c!=null&&o?c-o:0,pc=o?d/o*100:0;
+return `<div class="pcard" style="--i:${KS.indexOf(k)}"><div class="s">${tt()[k]} · ${tt().pu} ${tt()[unit=='v'?'vori':'gram']}</div><div class="p">৳<span class="cu" data-v="${c??''}">${fm(c)}</span></div><div class="s ${d>0?'up':d<0?'dn':''}">${d>0?'▲':d<0?'▼':'•'} ${fm(Math.abs(d))} (${Math.abs(pc).toFixed(2)}%)</div></div>`}).join('');cu();
+let R=A;if(cust)R=A.filter(r=>(!cust[0]||r.date>=cust[0])&&(!cust[1]||r.date<=cust[1]));else if(days)R=A.slice(-days);
+const dv=R.map(r=>v(r,key)),ok=dv.filter(x=>x!=null);
+$('st').textContent=ok.length?`${tt().hi}: ৳${fm(Math.max(...ok))} · ${tt().lo}: ৳${fm(Math.min(...ok))} · ${tt().av}: ৳${fm(ok.reduce((s,x)=>s+x,0)/ok.length)}`:'';
+ch=ch||echarts.init($('ch'));const l=document.documentElement.classList.contains('l'),tc=l?'#6b6558':'#9a9484';
+ch.setOption({animationDuration:1600,animationEasing:'cubicOut',grid:{left:8,right:12,top:20,bottom:60,containLabel:true},tooltip:{trigger:'axis',valueFormatter:x=>'৳'+fm(x)},
+xAxis:{type:'category',data:R.map(r=>r.date),axisLabel:{color:tc}},yAxis:{type:'value',scale:true,axisLabel:{color:tc,formatter:x=>fm(x)},splitLine:{lineStyle:{color:'rgba(128,128,128,.15)'}}},
+dataZoom:[{type:'inside'},{type:'slider',height:22,bottom:8}],
+series:[{name:tt()[key],type:'line',data:dv,smooth:true,showSymbol:R.length<45,lineStyle:{color:'#e6b422',width:3},itemStyle:{color:'#e6b422'},
+areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(230,180,34,.4)'},{offset:1,color:'rgba(230,180,34,0)'}])}}]},true);calc()}
+function calc(){const a=A[A.length-1];if(!a)return;const per=a[$('kt').value];if(per==null){$('to2').textContent='—';return}
+const w=(+$('wt').value||0)*($('wu').value=='v'?1:1/G),base=w*per,mk=base*(+$('mc').value||0)/100,t=base+mk+mk*(+$('vt').value||0)/100;$('to2').textContent='৳'+fm(t)}
+$('u').onclick=()=>{unit=unit=='v'?'g':'v';render()};$('lg').onclick=()=>{lang=lang=='bn'?'en':'bn';localStorage.lang=lang;render()};
+$('th').onclick=()=>{document.documentElement.classList.toggle('l');localStorage.th=document.documentElement.classList.contains('l')?1:'';render()};
+$('k').onchange=e=>{key=e.target.value;render()};['wt','wu','kt','mc','vt'].forEach(i=>$(i).oninput=calc);
+$('ap').onclick=()=>{cust=[$('f').value,$('to').value];if(!cust[0]&&!cust[1])cust=null;render()};
+$('fb').onclick=()=>{const r=A.find(x=>x.date==$('fd').value);$('fr').innerHTML=r?`<b>${dstr(r.date)}</b><br>`+KS.map(k=>`${tt()[k]}: ৳${fm(v(r,k))}`).join('<br>'):tt().nod};
+$('csv').onclick=()=>{const c='date,'+KS.join(',')+'\n'+A.map(r=>[r.date,...KS.map(k=>r[k]??'')].join(',')).join('\n');
+const x=document.createElement('a');x.href=URL.createObjectURL(new Blob([c],{type:'text/csv'}));x.download='sona-rupa-bd.csv';x.click()};
+addEventListener('resize',()=>ch&&ch.resize());if(localStorage.th)document.documentElement.classList.add('l');
+$('cards').innerHTML=Array(5).fill('<div class="sk"></div>').join('');
+fetch('/api/prices').then(r=>r.json()).then(d=>{A=Array.isArray(d)?d:[];render()}).catch(()=>render());
+</script></body></html>
