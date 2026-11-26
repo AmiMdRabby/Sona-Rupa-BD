@@ -1,0 +1,9 @@
+<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sona Rupa BD – অ্যাডমিন</title>
+<style>body{font-family:system-ui,sans-serif;background:#0b0d12;color:#eee;max-width:420px;margin:0 auto;padding:20px}input,button{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#171a22;color:#eee;font-size:16px;box-sizing:border-box}button{background:#d4a017;color:#000;font-weight:700;border:0}</style></head><body>
+<h2>🪙 Sona Rupa BD<br>দাম এন্ট্রি (প্রতি ভরি, টাকা)</h2>
+<input id="password" type="password" placeholder="অ্যাডমিন পাসওয়ার্ড"><input id="date" type="date">
+<input id="gold22" type="number" placeholder="২২ ক্যারেট"><input id="gold21" type="number" placeholder="২১ ক্যারেট"><input id="gold18" type="number" placeholder="১৮ ক্যারেট"><input id="sonatan" type="number" placeholder="সনাতন"><input id="silver" type="number" placeholder="রূপা (২২ ক্যারেট/ভরি)">
+<button onclick="go()">সেভ করুন</button><p id="m"></p>
+<script>date.value=new Date(Date.now()+6*36e5).toISOString().slice(0,10);
+async function go(){const b={};document.querySelectorAll('input').forEach(i=>b[i.id]=i.value);
+const r=await fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});const j=await r.json();m.textContent=j.ok?'✅ সেভ হয়েছে':'❌ '+j.error}</script></body></html>
